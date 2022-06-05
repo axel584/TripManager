@@ -1,0 +1,14 @@
+version: "3.6"
+services:
+  mongo-database:
+    image: mongo
+    container_name: my_mongodb_container
+    environment: 
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_DATABASE: tripDB
+    volumes:
+      - ./init-mongo.js/:/docker-entrypoint-initdb.d/init-mongo.js:ro
+      - ./data/mongodb:/data/db
+    ports:
+      - 27017-27019:27017-27019
